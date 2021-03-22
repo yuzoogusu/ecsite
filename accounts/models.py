@@ -1,12 +1,12 @@
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import UserManager, PermissionsMixin
-from django,utils import timezone
+from django.utils import timezone
 
 
 class UserManager(UserManager):
     
-    def _create_user(self,  email, password, **extra_fields):
+    def create_user(self,  email, password, **extra_fields):
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
@@ -32,21 +32,19 @@ class UserManager(UserManager):
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('email address', unique=True)
-
-   
-    first_name = models.CharField(_('first name'), max_length=30)
-    last_name = models.CharField(_('last name'), max_length=30)
-    department = models.CharField('affiliation', max_Length=30, blank=True)
+    first_name = models.CharField('first name', max_length=30)
+    last_name = models.CharField('last name', max_length=30)
+    department = models.CharField('affiliation', max_length=30, blank=True)
     created = models.DateTimeField('join date', default=timezone.now)
     is_staff = models.BooleanField(
-        _('staff status'),
+        ('staff status'),
         default=False,
-        help_text=_('Designates whether the user can log into this admin site.'),
+        help_text=('Designates whether the user can log into this admin site.'),
     )
     is_active = models.BooleanField(
-        _('active'),
+        ('active'),
         default=True,
-        help_text=_(
+        help_text=(
             'Designates whether this user should be treated as active. '
             'Unselect this instead of deleting accounts.'
         ),
@@ -59,8 +57,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
+        verbose_name = ('user')
+        verbose_name_plural = ('users')
 
     def clean(self):
         super().clean()
