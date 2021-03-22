@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'app',
     'accounts',
-    'django.contrib.site',
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
