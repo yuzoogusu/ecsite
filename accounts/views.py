@@ -33,14 +33,14 @@ class ProfileEditView(View):
     def post(self, request, *args, **kwargs):
         form = ProfileForm(request.POST or None)
         if form.is_valid():
-            user_data = CustomUser.object.get(id=request.user.id)
+            user_data = CustomUser.objects.get(id=request.user.id)
             user_data.first_name = form.cleaned_data['first_name']
             user_data.last_name = form.cleaned_data['last_name']
             user_data.department = form.cleaned_data['department']
             user_data.save()
             return redirect('profile')
 
-        return render(request, 'accounts/projile.html', {
+        return render(request, 'accounts/profile.html', {
             'form': form
         })
 
