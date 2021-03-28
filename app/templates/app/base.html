@@ -22,6 +22,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'profile' %}">プロフィール</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">logout</a>
+                    </li>
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
@@ -37,3 +40,4 @@
             {% endblock %}
         </div>
     </main>
+</body>
