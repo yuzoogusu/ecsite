@@ -18,11 +18,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="header">affiliation</th>
+                        <th class="header">address</th>
                         <td class="data">
-                            {% render_field form.department class='form-control' placeholder='affiliation' %}
+                            {% render_field form.address class='form-control' placeholder='address' %}
                         </td>
                     </tr>
+                    <tr>
+                        <th class="header">tel</th>
+                        <td class="data">
+                            {% render_field form.tel class='form-control' placeholder='tel' %}
+                        </td>
                 </tbody>
             </table>
             <div class="button mx-auto">

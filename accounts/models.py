@@ -31,10 +31,12 @@ class UserManager(UserManager):
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('email address', unique=True)
-    first_name = models.CharField('first name', max_length=30)
-    last_name = models.CharField('last name', max_length=30)
-    department = models.CharField('affiliation', max_length=30, blank=True)
-    created = models.DateTimeField('join date', default=timezone.now)
+    first_name = models.CharField(('first name'), max_length=30)
+    last_name = models.CharField(('last name'), max_length=30)
+    address = models.CharField(('address'), max_length=30, blank=True)
+    tel = models.CharField(('tel'), max_length=30, blank=True)
+    created = models.DateTimeField(('join date'), default=timezone.now)
+    
     is_staff = models.BooleanField(
         ('staff status'),
         default=False,
