@@ -1,8 +1,26 @@
 {% extends 'app/base.html' %}
 
 {% block content %}
-<div>
-    <h1>hello world </h1>
 
+<div class="text-center my-5">
+    <div class="row">
+        {% for item in item_data %}
+            <div class="col-lg-3" col-md-6>
+                <div class="card imag-thumbnail itemlist mb-3">
+                    <img src="{{ item.image.url }}" alt="" class="card-img-top card-thum">
+                    <div class="card-body text-center px-2 py-3">
+                        <p class="mb-0 text-secondary">{{ item.category }}</p>
+                        <h5 class="font-weight-bold">{{ item.title }}</h5>
+                        <h4 class="font-weight-bold">
+                            {{ item.price }}yen
+                        </h4>
+                        <a class="stretched-link" href="{% url 'product' item.slug %}"></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
 </div>
+
 {% endblock %}
